@@ -38,7 +38,7 @@ export function CommandPalette({
   open: boolean;
   setOpen: (o: boolean) => void;
 }) {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -113,7 +113,7 @@ export function CommandPalette({
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Appearance">
-          <CommandItem onSelect={() => run(() => setTheme(theme === "dark" ? "light" : "dark"))}>
+          <CommandItem onSelect={() => run(toggle)}>
             {theme === "dark" ? <Sun /> : <Moon />}
             <span>Switch to {theme === "dark" ? "light" : "dark"} mode</span>
           </CommandItem>
