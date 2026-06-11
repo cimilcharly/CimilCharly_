@@ -65,7 +65,6 @@
   --radius: 0.875rem;
   /* Light: warm paper workspace */
   --background: oklch(0.97 0.012 80);
-  --foreground: oklch(0.२2 0.02 260);
   --foreground: oklch(0.22 0.02 260);
   --card: oklch(0.99 0.008 80);
   --card-foreground: oklch(0.22 0.02 260);
