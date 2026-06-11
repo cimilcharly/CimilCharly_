@@ -1,4 +1,5 @@
 import { ThemeToggle } from "./theme";
+import { Command as CommandIcon } from "lucide-react";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -9,7 +10,7 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
-export function Nav() {
+export function Nav({ onOpenCommand }: { onOpenCommand?: () => void }) {
   return (
     <header className="fixed left-1/2 top-4 z-40 w-[min(96%,52rem)] -translate-x-1/2">
       <nav className="glass-soft flex items-center justify-between gap-2 rounded-full px-3 py-2 sm:px-4">
@@ -31,6 +32,14 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={onOpenCommand}
+            aria-label="Open command palette"
+            className="glass-soft hidden items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-mono text-muted-foreground transition hover:text-foreground sm:inline-flex"
+          >
+            <CommandIcon className="h-3 w-3" />
+            <span>K</span>
+          </button>
           <a
             href="#contact"
             className="hidden rounded-full bg-primary px-4 py-1.5 text-xs font-medium text-primary-foreground transition hover:scale-105 sm:inline-block"
