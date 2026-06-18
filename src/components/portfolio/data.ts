@@ -14,22 +14,40 @@ export const profile = {
 
 export const projects = [
   {
-    id: "insider-threat",
-    name: "LLM Insider Threat Detection",
-    folder: "ai-research",
-    color: "from-amber-400/30 to-rose-400/20",
-    tagline: "Behavioral analytics + LLM risk scoring for insider threats.",
+    id: "sentinel-ai",
+    name: "Sentinel AI",
+    folder: "ai-saas",
+    color: "from-red-400/30 to-amber-400/20",
+    tagline: "Enterprise-grade insider threat detection with Hybrid AI.",
     description:
-      "An AI framework that flags suspicious insider activity from email logs and system telemetry. Uses LLM-based risk scoring layered on behavioral analytics, with a real-time Streamlit dashboard.",
+      "A production-ready SaaS platform for detecting insider threats using a hybrid ML + LLM pipeline. Features a FastAPI backend with 15+ endpoints, React frontend with 7 pages, multi-tenant PostgreSQL, real-time webhooks, and Docker deployment.",
     features: [
-      "LLM-based risk scoring of user behavior",
-      "Behavioral analytics over communication + system logs",
-      "Interactive Streamlit dashboard with live alerts",
-      "Modular architecture for future detectors",
+      "Hybrid ML (Isolation Forest) + LLM (GPT-4) threat detection",
+      "Multi-tenant SaaS with Role-Based Access Control",
+      "Real-time webhook ingestion from Office365, Splunk & Active Directory",
+      "Automated threat reports & Stripe billing integration",
     ],
-    stack: ["Python", "LLMs", "NLP", "Streamlit", "SQLite"],
-    github: "https://github.com/cimilcharly",
+    stack: ["Python", "FastAPI", "React", "PostgreSQL", "Docker", "GPT-4", "Next.js"],
+    github: "https://github.com/cimilcharly/Sentinel-AI",
     demo: null,
+  },
+  {
+    id: "promiseos",
+    name: "PromiseOS",
+    folder: "web-app",
+    color: "from-violet-400/30 to-blue-400/20",
+    tagline: "A modern Next.js web application, live on Vercel.",
+    description:
+      "A TypeScript-powered Next.js application deployed on Vercel. Built with modern web standards, optimized fonts (Geist), and a clean, production-ready architecture.",
+    features: [
+      "Next.js App Router with TypeScript",
+      "Optimized with Geist font family (Vercel)",
+      "Deployed and live on Vercel",
+      "Modern, production-ready web architecture",
+    ],
+    stack: ["Next.js", "TypeScript", "React", "Vercel"],
+    github: "https://github.com/cimilcharly/Promiseos",
+    demo: "https://promiseos.vercel.app",
   },
   {
     id: "pet-pantry",
@@ -46,7 +64,7 @@ export const projects = [
       "Iteratively tested & deployed to Render",
     ],
     stack: ["Django", "Python", "Bootstrap", "SQLite"],
-    github: "https://github.com/cimilcharly",
+    github: "https://github.com/cimilcharly/Pet-Pantry",
     demo: "https://pet-pantry-awdx.onrender.com",
   },
   {

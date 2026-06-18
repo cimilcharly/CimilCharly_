@@ -72,30 +72,87 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const SITE_URL = "https://cimilcharly.vercel.app";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Cimil Charly",
+  url: SITE_URL,
+  sameAs: [
+    "https://github.com/cimilcharly",
+    "https://linkedin.com/in/cimil-charly",
+  ],
+  jobTitle: "AI/ML Engineer & Full-Stack Developer",
+  description:
+    "Final-year B.Tech student in Computer Science (AI & ML) at CHRIST University. Building intelligent, full-stack products — from LLM-driven systems to production ERP modules.",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "CHRIST (Deemed to be University)",
+    address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
+  },
+  knowsAbout: ["Machine Learning", "LLMs", "Full-Stack Development", "Python", "Android", "Django"],
+  email: "cimilcharly@gmail.com",
+};
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Cimil Charly — AI/ML Engineer & Full-Stack Developer" },
-      { name: "description", content: "Portfolio of Cimil Charly, a final-year B.Tech CS (AI/ML) student building intelligent, full-stack products." },
+      {
+        name: "description",
+        content:
+          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer. B.Tech CS (AI & ML) at CHRIST University, Bengaluru. Building LLM systems, SaaS platforms, and mobile apps.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Cimil Charly, cimilcharly, AI ML Engineer, Full Stack Developer, CHRIST University, Bengaluru, Python, Django, LLM, Machine Learning, Android, Portfolio",
+      },
       { name: "author", content: "Cimil Charly" },
-      { property: "og:title", content: "Cimil Charly — AI/ML Engineer & Full-Stack Developer" },
-      { property: "og:description", content: "A digital workspace portfolio: projects, experience, skills and contact." },
+      { name: "robots", content: "index, follow" },
+      { name: "googlebot", content: "index, follow" },
+      // Open Graph
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:title", content: "Cimil Charly — AI/ML Engineer & Full-Stack Developer" },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer building LLM systems, SaaS platforms, and mobile apps.",
+      },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:site_name", content: "Cimil Charly Portfolio" },
+      { property: "og:locale", content: "en_IN" },
+      // Twitter / X
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Cimil Charly — AI/ML Engineer & Full-Stack Developer" },
+      {
+        name: "twitter:description",
+        content: "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer.",
+      },
+      { name: "twitter:image", content: OG_IMAGE },
+      // JSON-LD — injected as a raw script tag via links workaround
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: SITE_URL },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(jsonLd),
       },
     ],
   }),
