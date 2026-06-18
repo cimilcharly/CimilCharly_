@@ -115,6 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Cimil Charly" },
       { name: "robots", content: "index, follow" },
       { name: "googlebot", content: "index, follow" },
+      { name: "google-site-verification", content: "ie56C6cpVVvJAskZocvLISHymbAfz2anDSCIVer8Qwo" },
       // Open Graph
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
