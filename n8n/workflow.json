@@ -1,0 +1,365 @@
+{
+  "name": "Cimil AI Assistant Workflows",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cimil-ai-chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-chat",
+      "name": "Webhook (Chat)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        250,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.message }}",
+        "options": {
+          "systemMessage": "You are Cimil Charly's Recruiter AI Assistant, integrated directly into his portfolio. Your goal is to help recruiters learn about Cimil's projects, skills, education, and experience. \n\nAlways use the Knowledge Search tool to retrieve accurate facts about Cimil before answering. If a question is about GitHub repositories or statistics, use the GitHub Tool.\n\nKeep answers professional, concise, and structured. Do not make up any facts or project details. If you cannot find the answer in the retrieved context, politely state that you don't know and suggest they contact Cimil directly using the contact form."
+        }
+      },
+      "id": "ai-agent",
+      "name": "AI Agent",
+      "type": "n8n-nodes-base.advancedAgent",
+      "typeVersion": 7.2,
+      "position": [
+        500,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gemini-3.1-flash-lite",
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "id": "gemini-model",
+      "name": "Google Gemini",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        420,
+        560
+      ],
+      "credentials": {
+        "googleApiKey": {
+          "id": "gemini-api-cred-id",
+          "name": "Google Gemini API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "chat-memory",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.2,
+      "position": [
+        530,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "name": "knowledge_search",
+        "description": "Searches Cimil Charly's portfolio knowledge base (profile, resume, experience, skills, projects, and research) for specific factual information. Input should be a search query string.",
+        "url": "http://localhost:3000/api/ai/search",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"query\": \"{{ $parameter.query }}\"\n}",
+        "responseKey": "text"
+      },
+      "id": "knowledge-tool",
+      "name": "Knowledge Search Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpCall",
+      "typeVersion": 1,
+      "position": [
+        660,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "name": "github_tool",
+        "description": "Fetches real-time repository statistics, commits, or language details from Cimil's GitHub. Input should be 'stats', 'repos', 'commits', or 'python-projects' depending on request.",
+        "url": "http://localhost:3000/api/ai/github",
+        "method": "POST",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"action\": \"{{ $parameter.query }}\"\n}",
+        "responseKey": "data"
+      },
+      "id": "github-tool",
+      "name": "GitHub Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpCall",
+      "typeVersion": 1,
+      "position": [
+        770,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"output\": \"{{ $json.output }}\"\n}",
+        "options": {}
+      },
+      "id": "webhook-response",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        760,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "cimil-contact",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-contact",
+      "name": "Webhook (Contact)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        250,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "your-google-sheet-id",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Sheet1",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.body.name }}",
+            "Company": "={{ $json.body.company }}",
+            "Email": "={{ $json.body.email }}",
+            "Message": "={{ $json.body.message }}",
+            "Preferred Interview Time": "={{ $json.body.preferredTime }}",
+            "Timestamp": "={{ new Date().toISOString() }}"
+          },
+          "matchingColumns": []
+        },
+        "options": {}
+      },
+      "id": "google-sheets-node",
+      "name": "Google Sheets (Log)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        450,
+        800
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "google-sheets-cred-id",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "=cimilcharly@gmail.com",
+        "subject": "=New Recruiter Inquiry from {{ $json.body.name }} ({{ $json.body.company }})",
+        "emailType": "text",
+        "message": "=Hi Cimil,\n\nYou have a new inquiry from a recruiter:\n\nName: {{ $json.body.name }}\nCompany: {{ $json.body.company }}\nEmail: {{ $json.body.email }}\nMessage: {{ $json.body.message }}\nPreferred Interview Time: {{ $json.body.preferredTime }}\n\nReply directly to them via email: {{ $json.body.email }}.",
+        "options": {}
+      },
+      "id": "gmail-node",
+      "name": "Gmail (Notification)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        620,
+        800
+      ],
+      "credentials": {
+        "gmailOAuth2Api": {
+          "id": "gmail-cred-id",
+          "name": "Gmail OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "calendarId": "primary",
+        "start": "={{ $json.body.preferredTime }}",
+        "end": "={{ new Date(new Date($json.body.preferredTime).getTime() + 30 * 60000).toISOString() }}",
+        "summary": "=Interview Invitation: Cimil Charly & {{ $json.body.name }} ({{ $json.body.company }})",
+        "description": "=Discussion about opportunities at {{ $json.body.company }}.\n\nCandidate: Cimil Charly (cimilcharly@gmail.com)\nRecruiter: {{ $json.body.name }} ({{ $json.body.email }})\nMessage: {{ $json.body.message }}",
+        "attendees": [
+          "={{ $json.body.email }}"
+        ],
+        "options": {}
+      },
+      "id": "google-calendar-node",
+      "name": "Google Calendar (Invite)",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.2,
+      "position": [
+        780,
+        800
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "google-calendar-cred-id",
+          "name": "Google Calendar OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"success\": true,\n  \"message\": \"Your contact request was submitted successfully!\"\n}",
+        "options": {}
+      },
+      "id": "webhook-contact-response",
+      "name": "Respond to Contact Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        940,
+        800
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook (Chat)": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Knowledge Search Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook (Contact)": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets (Log)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets (Log)": {
+      "main": [
+        [
+          {
+            "node": "Gmail (Notification)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail (Notification)": {
+      "main": [
+        [
+          {
+            "node": "Google Calendar (Invite)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Calendar (Invite)": {
+      "main": [
+        [
+          {
+            "node": "Respond to Contact Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "active": true
+}

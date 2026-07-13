@@ -1,0 +1,56 @@
+{
+  "id": "pet-pantry-main",
+  "name": "Pet Pantry",
+  "folder": "Pet-Pantry-main",
+  "summary": "A Django-based e-commerce platform dedicated to pet supplies, featuring product management, delivery tracking, and administrative capabilities.",
+  "recruiterExplanation": "This project showcases Cimil's proficiency in full-stack web development using the Django framework. By implementing core e-commerce functionalities like product catalogs and administrative delivery management, he demonstrates practical experience in handling database-driven applications, user authentication, and back-office system architecture, which are foundational for scalable SDE roles.",
+  "technicalExplanation": "The application is built on a standard Django MVC architecture. It utilizes Django's ORM for database abstraction, interacting with a SQLite backend (as evidenced by the datadump.json and gitignore patterns). The application logic resides in standard Django modules, managing entities like 'product' and 'deliveryboy'. Static and media files are managed via Django's collectstatic utility, with support for WebP image processing. Data integrity is maintained through Django migrations, and the system supports complex administrative audit logging using the built-in admin logentry model.",
+  "architectureExplanation": "The project follows a standard monolithic Django architecture. It adheres to the MVT (Model-View-Template) pattern, separating data models, request handling logic, and presentation layers. The structure is modular, grouping functionality by app components, which is the standard industry approach for maintainable Django projects.",
+  "languages": [
+    "Python",
+    "HTML",
+    "CSS",
+    "Bash"
+  ],
+  "frameworks": [
+    "Django"
+  ],
+  "databases": [
+    "SQLite"
+  ],
+  "apis": [
+    "Django Admin API"
+  ],
+  "auth": [
+    "Django Authentication System"
+  ],
+  "deployment": [
+    "Render",
+    "Gunicorn/WSGI"
+  ],
+  "designPatterns": [
+    "MVC/MVT",
+    "Singleton (Django Config)"
+  ],
+  "features": [
+    "Product Inventory Management",
+    "Delivery Tracking System",
+    "Admin Administrative Audit Logs",
+    "Media Asset Management"
+  ],
+  "aiModels": [],
+  "libraries": [
+    "Django",
+    "Pillow"
+  ],
+  "faqs": [
+    {
+      "q": "How is the data persisted in this project?",
+      "a": "The project uses Django's ORM linked to a SQLite database, which is configured for local development and easily migratable for production environments."
+    },
+    {
+      "q": "What is the role of the build.sh script?",
+      "a": "The build script automates the CI/CD process by installing project dependencies, running static file collection, and executing database migrations to ensure the environment is ready for deployment."
+    }
+  ]
+}

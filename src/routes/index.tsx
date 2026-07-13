@@ -11,6 +11,12 @@ import { CommandPalette } from "@/components/portfolio/CommandPalette";
 import { Dock } from "@/components/portfolio/Dock";
 import { profile } from "@/components/portfolio/data";
 
+import { lazy, Suspense } from "react";
+import { useAI } from "@/hooks/use-ai";
+import { motion } from "framer-motion";
+
+const AIAssistant = lazy(() => import("@/components/portfolio/AIAssistant"));
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -25,6 +31,8 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [cmdOpen, setCmdOpen] = useState(false);
+  const { isOpen, setIsOpen } = useAI();
+
   return (
     <div className="workspace-bg relative min-h-screen text-foreground">
       <Nav onOpenCommand={() => setCmdOpen(true)} />
@@ -44,6 +52,29 @@ function Index() {
       </footer>
       <Dock onCommand={() => setCmdOpen(true)} />
       <CommandPalette open={cmdOpen} setOpen={setCmdOpen} />
+
+      {/* Floating Action Button */}
+      {!isOpen && (
+        <motion.button
+          onClick={() => setIsOpen(true)}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="glass-soft fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full border border-primary/30 bg-primary/20 px-4 py-3 text-sm font-semibold text-primary shadow-lg shadow-primary/10 transition"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-primary pulse-dot" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
+          🤖 Ask Cimil AI
+        </motion.button>
+      )}
+
+      {/* AI Recruiter Assistant UI */}
+      <Suspense fallback={null}>
+        <AIAssistant />
+      </Suspense>
     </div>
   );
 }

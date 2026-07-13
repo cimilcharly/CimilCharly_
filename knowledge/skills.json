@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "Languages",
+      "items": [
+        "Python",
+        "Java",
+        "C",
+        "JavaScript",
+        "Kotlin"
+      ]
+    },
+    {
+      "name": "Frameworks",
+      "items": [
+        "Django",
+        "Bootstrap",
+        "Streamlit"
+      ]
+    },
+    {
+      "name": "Databases",
+      "items": [
+        "MongoDB",
+        "MySQL",
+        "SQLite",
+        "Firebase"
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "Postman",
+        "Android Studio"
+      ]
+    },
+    {
+      "name": "Concepts",
+      "items": [
+        "Machine Learning",
+        "NLP",
+        "LLMs",
+        "REST APIs",
+        "OOP",
+        "SDLC"
+      ]
+    }
+  ],
+  "certifications": [
+    "Government of India Copyright Registration — Research Work",
+    "Introduction to IoT — NPTEL, IIT Kharagpur",
+    "Build Your Own Chatbot — IBM",
+    "Programming for Data Analytics — L&T EduTech"
+  ]
+}

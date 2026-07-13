@@ -3,10 +3,12 @@ import { ExternalLink, Folder, Github, X } from "lucide-react";
 import { useState } from "react";
 import { projects } from "./data";
 import { Window } from "./Window";
+import { useAI } from "@/hooks/use-ai";
 
 export function Projects() {
   const [openId, setOpenId] = useState<string | null>(null);
   const open = projects.find((p) => p.id === openId);
+  const { prefillMessage } = useAI();
 
   return (
     <section id="projects" className="relative px-4 py-28 sm:px-8 lg:px-12">
@@ -23,7 +25,7 @@ export function Projects() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ delay: i * 0.06 }}
               whileHover={{ y: -6 }}
-              className="group relative flex flex-col items-start gap-3 text-left"
+              className="group relative flex flex-col items-start gap-3 text-left w-full"
             >
               <div
                 className={`relative h-28 w-full rounded-xl bg-gradient-to-br ${p.color} p-1 shadow-lg ring-1 ring-glass-border transition group-hover:shadow-2xl`}
@@ -36,9 +38,20 @@ export function Projects() {
                   </span>
                 </div>
               </div>
-              <div className="px-1">
-                <div className="text-sm font-semibold text-foreground">{p.name}</div>
-                <div className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">{p.tagline}</div>
+              <div className="px-1 w-full flex justify-between items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  <div className="text-sm font-semibold text-foreground truncate">{p.name}</div>
+                  <div className="mt-0.5 line-clamp-2 text-xs text-muted-foreground">{p.tagline}</div>
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prefillMessage(`Explain the project: ${p.name}`);
+                  }}
+                  className="shrink-0 flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-2 py-0.5 font-mono text-[9px] text-primary transition hover:bg-primary/20"
+                >
+                  ✨ Ask AI
+                </button>
               </div>
             </motion.button>
           ))}
@@ -65,9 +78,9 @@ export function Projects() {
                 <Window title={open.name} subtitle={open.folder} draggable>
                   <div className="relative">
                     <button
-                      onClick={() => setOpenId(null)}
-                      aria-label="Close window"
-                      className="absolute right-4 top-4 z-10 rounded-full p-1.5 text-muted-foreground transition hover:bg-foreground/10 hover:text-foreground"
+                       onClick={() => setOpenId(null)}
+                       aria-label="Close window"
+                       className="absolute right-4 top-4 z-10 rounded-full p-1.5 text-muted-foreground transition hover:bg-foreground/10 hover:text-foreground"
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -122,6 +135,12 @@ export function Projects() {
                             <ExternalLink className="h-4 w-4" /> Live demo
                           </a>
                         )}
+                        <button
+                          onClick={() => prefillMessage(`Explain the project: ${open.name}. What was your role, and what are its features, technical stack, architecture, and deployment setup?`)}
+                          className="glass-soft inline-flex items-center gap-2 rounded-full border border-indigo-500/20 px-4 py-2 text-sm text-indigo-400 transition hover:scale-[1.02]"
+                        >
+                          ✨ Ask AI
+                        </button>
                       </div>
                     </div>
                   </div>

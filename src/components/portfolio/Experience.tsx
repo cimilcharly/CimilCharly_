@@ -4,11 +4,13 @@ import { useState } from "react";
 import { experience } from "./data";
 import { Window } from "./Window";
 import { SectionHeading } from "./Projects";
+import { useAI } from "@/hooks/use-ai";
 
 export function Experience() {
   const [page, setPage] = useState(0);
   const [dir, setDir] = useState(1);
   const entry = experience[page];
+  const { prefillMessage } = useAI();
 
   const go = (d: number) => {
     setDir(d);
@@ -34,7 +36,15 @@ export function Experience() {
                   className="origin-left"
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="font-display text-3xl text-foreground sm:text-4xl">{entry.role}</h3>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <h3 className="font-display text-3xl text-foreground sm:text-4xl">{entry.role}</h3>
+                      <button
+                        onClick={() => prefillMessage(`Explain Cimil's experience as a ${entry.role} at ${entry.company}. What was his role, main achievements, and what did he work on?`)}
+                        className="shrink-0 flex items-center gap-1 rounded-full border border-primary/20 bg-primary/10 px-2.5 py-0.5 font-mono text-[10px] text-primary transition hover:bg-primary/20"
+                      >
+                        ✨ Ask AI
+                      </button>
+                    </div>
                     <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                       {entry.when}
                     </span>

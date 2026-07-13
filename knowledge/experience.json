@@ -1,0 +1,35 @@
+[
+  {
+    "role": "Software Development Intern",
+    "company": "Genrobotics Innovations Pvt. Ltd.",
+    "where": "Technopark, Thiruvananthapuram",
+    "when": "Apr 2026 – May 2026",
+    "notes": [
+      "Built ERP modules that streamlined organizational workflows and improved reporting efficiency.",
+      "Integrated software components and supported implementation based on operational requirements.",
+      "Owned testing, debugging and issue resolution across application surfaces.",
+      "Collaborated with engineers and stakeholders to translate requirements into shipped software.",
+      "Maintained technical documentation for knowledge transfer and future enhancements."
+    ]
+  },
+  {
+    "role": "B.Tech in Computer Science (AI & ML)",
+    "company": "CHRIST (Deemed to be University)",
+    "where": "Bengaluru, India",
+    "when": "2023 – 2027 · CGPA 8.8 / 10",
+    "notes": [
+      "Coursework: DSA, DBMS, Operating Systems, Computer Networks, Machine Learning, Software Engineering.",
+      "Member — Industry Institute Interaction Cell (IIIC).",
+      "General Leader — National Service Scheme (NSS)."
+    ]
+  },
+  {
+    "role": "Higher Secondary — Computer Science",
+    "company": "St. Mary's HSS, Kottayam",
+    "where": "Kerala, India",
+    "when": "2021 – 2023 · 97% aggregate",
+    "notes": [
+      "School Representative; Troop Leader — Bharat Scouts and Guides."
+    ]
+  }
+]

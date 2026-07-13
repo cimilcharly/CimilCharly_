@@ -16,9 +16,9 @@ export function Window({ title, subtitle, children, className = "", draggable = 
       dragMomentum={false}
       dragElastic={0.08}
       whileHover={draggable ? { scale: 1.005 } : undefined}
-      className={`glass rounded-2xl overflow-hidden ${draggable ? "cursor-grab active:cursor-grabbing" : ""} ${className}`}
+      className={`glass rounded-2xl overflow-hidden flex flex-col ${draggable ? "cursor-grab active:cursor-grabbing" : ""} ${className}`}
     >
-      <div className="window-chrome">
+      <div className="window-chrome shrink-0">
         <span className="traffic-dot bg-[#ff5f57]" />
         <span className="traffic-dot bg-[#febc2e]" />
         <span className="traffic-dot bg-[#28c840]" />
@@ -31,7 +31,7 @@ export function Window({ title, subtitle, children, className = "", draggable = 
           )}
         </div>
       </div>
-      <div>{children}</div>
+      <div className="flex-1 flex flex-col min-h-0">{children}</div>
     </motion.div>
   );
 }

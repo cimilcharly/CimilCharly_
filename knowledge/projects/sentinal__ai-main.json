@@ -1,0 +1,68 @@
+{
+  "id": "sentinal__ai-main",
+  "name": "Sentinel AI",
+  "folder": "Sentinal__AI-main",
+  "summary": "An AI-powered SaaS platform designed for enterprise insider threat detection and automated security audit monitoring using LLM-driven behavioral analysis.",
+  "recruiterExplanation": "This project demonstrates Cimil's advanced proficiency in building robust, secure, and scalable AI-driven infrastructure. He implemented a multi-tenant SaaS architecture, integrated sophisticated LLM pipelines for security anomaly detection, and managed the entire lifecycle—from data ingestion and synthetic data generation to billing integration via Stripe—proving his ability to deliver end-to-end production-grade software solutions.",
+  "technicalExplanation": "The backend is built with FastAPI, utilizing SQLAlchemy for relational mapping against a PostgreSQL backend. It features a custom tenant-isolation middleware that validates JWTs and manages audit logging per tenant. The ML pipeline utilizes Pandas for ETL and data cleansing, while leveraging OpenAI's LLM to perform contextual threat analysis on user communication logs. It includes custom scripts for database schema migrations via Alembic, automated synthetic data generation for testing risk models, and asynchronous task management with Redis.",
+  "architectureExplanation": "The project follows a modular monolithic architecture with a clear separation of concerns between core API services, security/auth middleware, and analytical ML ingestion pipelines. It uses a clean 'backend/' directory structure with isolated modules for database management, configuration, and feature-specific logic (billing, audit, ingestion), facilitating maintainable and testable code paths.",
+  "languages": [
+    "Python"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Alembic",
+    "SQLAlchemy",
+    "Pydantic"
+  ],
+  "databases": [
+    "PostgreSQL",
+    "SQLite",
+    "Redis"
+  ],
+  "apis": [
+    "Stripe API",
+    "OpenAI API",
+    "Sentry"
+  ],
+  "auth": [
+    "JWT",
+    "Custom Tenant-Isolation Middleware"
+  ],
+  "deployment": [
+    "Docker"
+  ],
+  "designPatterns": [
+    "Middleware",
+    "Dependency Injection",
+    "Singleton (for Config)"
+  ],
+  "features": [
+    "Tenant-isolated threat monitoring",
+    "Automated email/log analysis for security risks",
+    "SaaS multi-tier billing management",
+    "Audit logging system",
+    "Synthetic data generation engine"
+  ],
+  "aiModels": [
+    "OpenAI GPT Series"
+  ],
+  "libraries": [
+    "pandas",
+    "numpy",
+    "stripe",
+    "jwt",
+    "python-dotenv",
+    "faker"
+  ],
+  "faqs": [
+    {
+      "q": "How does the system ensure data isolation between clients?",
+      "a": "The project uses a custom TenantAuthMiddleware that inspects incoming JWTs for a 'tenant_id', injecting this context into the request state to ensure all subsequent database queries and audit logs are scoped to the correct tenant."
+    },
+    {
+      "q": "What approach was taken for threat detection?",
+      "a": "The platform combines traditional keyword-based anomaly detection (e.g., searching for password leakage patterns) with an LLM-driven summarization engine that scores user activity based on historical behavior and role-based risk assessment."
+    }
+  ]
+}

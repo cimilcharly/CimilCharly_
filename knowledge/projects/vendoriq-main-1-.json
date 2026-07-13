@@ -1,0 +1,72 @@
+{
+  "id": "vendoriq-main-1-",
+  "name": "VendorIQ",
+  "folder": "VendorIQ-main(1)",
+  "summary": "VendorIQ is a SaaS platform designed for procurement intelligence, leveraging decision-making algorithms to rank and evaluate vendors based on organizational metrics and scenario modeling.",
+  "recruiterExplanation": "VendorIQ demonstrates Cimil's capacity to build full-stack, data-intensive SaaS applications. By integrating complex decision-making algorithms like TOPSIS and weighted sum models with a robust FastAPI backend and Next.js frontend, he has showcased proficiency in architecting systems that provide tangible business value—enabling procurement teams to make data-driven decisions that reduce cost and improve operational efficiency.",
+  "technicalExplanation": "The backend is implemented in Python using FastAPI, structured into modules for Auth, Vendor CRUD, Scenario Management, and a specialized Decision Intelligence engine. The engine processes multi-criteria vendor metrics through Weighted Sum Models and TOPSIS algorithms. Data persistence is managed via PostgreSQL with SQLAlchemy ORM and Alembic migrations, while Redis is utilized for caching and performance optimization. The API follows a RESTful pattern, secured via JWT-based authentication with role-based access control (RBAC).",
+  "architectureExplanation": "The project utilizes a three-tier modular monolithic architecture. The Presentation Layer is a Next.js application that communicates over a REST API with the Application Layer. The Application Layer is modularized by business domain (Auth, Vendors, Scenarios), ensuring separation of concerns while allowing for shared access to the decision engine components.",
+  "languages": [
+    "Python",
+    "TypeScript",
+    "SQL",
+    "Bash"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Next.js",
+    "SQLAlchemy",
+    "Alembic",
+    "React"
+  ],
+  "databases": [
+    "PostgreSQL",
+    "Redis"
+  ],
+  "apis": [
+    "RESTful API",
+    "OAuth2"
+  ],
+  "auth": [
+    "JWT",
+    "OAuth2",
+    "Role-Based Access Control"
+  ],
+  "deployment": [
+    "Render",
+    "Docker"
+  ],
+  "designPatterns": [
+    "Dependency Injection",
+    "Repository Pattern",
+    "Model-View-Controller (implied)",
+    "Modular Monolith"
+  ],
+  "features": [
+    "Decision Intelligence Engine (TOPSIS/Weighted Sum)",
+    "Multi-tenant Procurement Management",
+    "Dynamic Scenario Modeling",
+    "Vendor Metric Analytics",
+    "Role-Based Access Control (Admin/Manager)"
+  ],
+  "aiModels": [
+    "Decision Intelligence Models (TOPSIS/Weighted Sum)"
+  ],
+  "libraries": [
+    "python-jose",
+    "passlib",
+    "pydantic",
+    "sqlalchemy",
+    "redis"
+  ],
+  "faqs": [
+    {
+      "q": "What is the core purpose of the decision engine?",
+      "a": "The decision engine allows procurement teams to quantify qualitative and quantitative vendor data using mathematical models like TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) to rank vendors according to specific weighted criteria."
+    },
+    {
+      "q": "How does the project handle scaling of metrics?",
+      "a": "The project uses SQL subqueries to fetch the latest metrics for vendors, ensuring that decision calculations are always based on the most recent data point available in the PostgreSQL database."
+    }
+  ]
+}

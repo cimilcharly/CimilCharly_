@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Phone, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Phone, Send, Bot } from "lucide-react";
 import { useState } from "react";
 import { profile } from "./data";
 import { Window } from "./Window";
 import { SectionHeading } from "./Projects";
+import { useAI } from "@/hooks/use-ai";
 
 interface Msg { from: "them" | "me"; text: string; time: string; }
 
@@ -20,6 +21,7 @@ export function Contact() {
   const [messages, setMessages] = useState<Msg[]>(initial);
   const [draft, setDraft] = useState("");
   const [sent, setSent] = useState(false);
+  const { setIsOpen } = useAI();
 
   const send = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +65,7 @@ export function Contact() {
                 <Linkedin className="h-5 w-5 text-primary" />
                 <div className="min-w-0">
                   <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">linkedin</div>
-                  <div className="truncate text-sm text-foreground">/in/cimil-charly</div>
+                  <div className="truncate text-sm text-foreground flex-1">/in/cimil-charly</div>
                 </div>
               </a>
               <a href={profile.github} target="_blank" rel="noreferrer" className="group flex items-center gap-3 rounded-xl border border-glass-border bg-secondary/40 p-4 transition hover:border-primary/40">
@@ -73,6 +75,16 @@ export function Contact() {
                   <div className="truncate text-sm text-foreground">@cimilcharly</div>
                 </div>
               </a>
+              <button
+                onClick={() => setIsOpen(true)}
+                className="w-full text-left group flex items-center gap-3 rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4 transition hover:border-indigo-500/40"
+              >
+                <Bot className="h-5 w-5 text-indigo-400" />
+                <div className="min-w-0">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-indigo-400">need to know more?</div>
+                  <div className="truncate text-sm text-foreground font-semibold">Ask my AI Assistant</div>
+                </div>
+              </button>
             </div>
           </Window>
 

@@ -1,0 +1,73 @@
+{
+  "id": "promiseos-main-1-",
+  "name": "PromiseOS",
+  "folder": "Promiseos-main(1)",
+  "summary": "PromiseOS is an AI-powered personal operating system that integrates calendar, email, and task management with real-time generative AI agents for intelligent daily briefings, voice-driven dictation, and automated scheduling.",
+  "recruiterExplanation": "Cimil demonstrated exceptional full-stack engineering proficiency by building PromiseOS, an AI-first application. His work shows deep integration capabilities with LLMs (Gemini/Claude), complex OAuth orchestration, and billing logic (Stripe), highlighting his ability to deliver end-to-end production-grade software that solves real-world productivity problems.",
+  "technicalExplanation": "The application leverages a Next.js App Router architecture with a serverless backend. It utilizes Google's Gemini 2.0 Flash for intelligent task/email processing and Anthropic's Claude/Whisper for conversational flows and transcription. The backend features robust API routes acting as intermediaries for Google Calendar and Gmail integration, using Supabase for persistent storage and authentication. It employs a mock-fallback strategy for development, ensuring high availability during API outages or configuration gaps.",
+  "architectureExplanation": "It is a modular, client-server application built on the Next.js framework. It employs a controller-based pattern within the App Router for API route management, separating external integrations (MCP servers for calendar/email sync) from the core UI logic. It is highly event-driven, using webhooks for asynchronous billing state reconciliation with Stripe.",
+  "languages": [
+    "TypeScript",
+    "JavaScript"
+  ],
+  "frameworks": [
+    "Next.js",
+    "React"
+  ],
+  "databases": [
+    "Supabase"
+  ],
+  "apis": [
+    "Google Calendar API",
+    "Gmail API",
+    "OpenAI Whisper",
+    "Anthropic API",
+    "Google Gemini API",
+    "Stripe API"
+  ],
+  "auth": [
+    "Supabase Auth",
+    "OAuth2",
+    "Google OAuth"
+  ],
+  "deployment": [
+    "Vercel"
+  ],
+  "designPatterns": [
+    "Strategy Pattern",
+    "Observer Pattern",
+    "Service-Oriented Architecture"
+  ],
+  "features": [
+    "AI-Synthesized Voice Briefings",
+    "Whisper-based Voice Dictation",
+    "Automated Commitment Extraction",
+    "Stripe Subscription Billing",
+    "Multi-Persona AI Chat Assistance"
+  ],
+  "aiModels": [
+    "Gemini 2.0 Flash",
+    "OpenAI Whisper",
+    "Claude"
+  ],
+  "libraries": [
+    "@supabase/ssr",
+    "@anthropic-ai/sdk",
+    "@google/generative-ai",
+    "googleapis",
+    "lucide-react",
+    "recharts",
+    "framer-motion",
+    "stripe"
+  ],
+  "faqs": [
+    {
+      "q": "What was the main challenge in this project?",
+      "a": "Managing state consistency between the local UI (React state) and the external Google workspace environment while handling secure asynchronous webhook events from Stripe for user subscription management."
+    },
+    {
+      "q": "How is the ML pipeline structured?",
+      "a": "The pipeline utilizes a hybrid approach: local browser-based transcription for low latency, and backend API-driven extraction where specialized LLM prompts are dispatched to Gemini/Claude to parse unstructured text into structured JSON commitments saved to the database."
+    }
+  ]
+}

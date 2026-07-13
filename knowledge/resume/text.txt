@@ -1,0 +1,63 @@
+# Cimil Charly
+
+cimilcharly@gmail.com | +91 8921494024 | [linkedin.com/in/cimil-charly](https://linkedin.com/in/cimil-charly) | [github.com/cimilcharly](https://github.com/cimilcharly)
+
+### SUMMARY
+Final-year B.Tech student in Computer Science (Artificial Intelligence and Machine Learning) with hands-on experience in full-stack development, ERP implementation, and AI-based applications. Skilled in Python, Java, Django, and database technologies with experience in software testing, debugging, and system integration. Seeking software engineering opportunities to build scalable products and solve real-world problems.
+
+### EDUCATION
+**CHRIST (Deemed to be University)** – Bengaluru, India | 2023 – 2027
+*   B.Tech in Computer Science (Artificial Intelligence and Machine Learning), CGPA: 8.8/10
+
+**St. Mary’s HSS** – Kottayam, India | 2021 – 2023
+*   Class XII (Higher Secondary), Aggregate: 97%
+
+### TECHNICAL SKILLS
+*   **Languages:** Python, Java, C, JavaScript, Kotlin
+*   **Frameworks:** Django, Bootstrap
+*   **Databases:** MongoDB, MySQL, SQLite, Firebase
+*   **Tools:** Git, GitHub, Streamlit, Postman, Android Studio
+*   **Concepts:** REST APIs, OOP, SDLC, Machine Learning, NLP, Large Language Models (LLMs)
+
+### EXPERIENCE
+**Software Development Intern** | April 2026 – May 2026
+*Genrobotics Innovations Pvt. Ltd., Technopark, Thiruvananthapuram, India*
+*   Developed ERP modules to streamline organizational workflows and improve reporting efficiency.
+*   Integrated software components and supported implementation activities based on operational requirements.
+*   Participated in testing, debugging, and issue resolution to ensure application reliability.
+*   Collaborated with engineers and stakeholders to gather requirements and translate them into software solutions.
+*   Maintained technical documentation to support knowledge transfer and future enhancements.
+
+### PROJECTS
+**LLM-Driven Insider Threat Detection Framework** | *Python, Machine Learning, NLP, LLMs, Streamlit, SQLite*
+*   Developed an AI-based threat detection framework to identify suspicious insider activities using email communications and system logs.
+*   Implemented behavioral analytics and LLM-based risk scoring mechanisms to classify user behavior.
+*   Built an interactive Streamlit dashboard for real-time monitoring, visualization, and reporting.
+*   Designed a modular architecture enabling scalability and future feature extensions.
+
+**Pet Pantry – Full-Stack E-Commerce Web Application** | *Django, Python, HTML, CSS, Bootstrap, SQLite*
+*   Developed a full-stack pet e-commerce platform enabling users to browse products, manage carts, and place orders through an intuitive interface.
+*   Implemented secure user authentication, product catalog management, and database-driven operations using Django and SQLite.
+*   Designed responsive front-end interfaces using HTML, CSS, and Bootstrap to enhance user experience across devices.
+*   Performed iterative testing, debugging, and deployment to ensure reliable application performance.
+*   **Live Demo:** [https://pet-pantry-awdx.onrender.com](https://pet-pantry-awdx.onrender.com)
+
+**Medical Reminder Application System** | *Kotlin, Java, XML, Android Studio, Firebase, SQLite*
+*   Developed a native Android application with Firebase integration for real-time data synchronization and SQLite for offline storage.
+*   Built scheduling and notification modules to ensure reliable medicine reminder delivery.
+*   Designed user-friendly interfaces to improve accessibility and usability.
+
+### RELEVANT COURSEWORK
+Data Structures and Algorithms, Database Management Systems, Operating Systems, Computer Networks, Machine Learning, Software Engineering
+
+### CERTIFICATIONS
+*   Government of India Copyright Registration – Research Work
+*   Introduction to Internet of Things – NPTEL, IIT Kharagpur
+*   Build Your Own Chatbot – IBM
+*   Programming for Data Analytics – L&T EduTech
+
+### POSITIONS OF RESPONSIBILITY
+*   Member – Industry Institute Interaction Cell (IIIC), CHRIST University
+*   General Leader – National Service Scheme (NSS)
+*   Troop Leader – Bharat Scouts and Guides
+*   School Representative – St. Mary’s HSS, Kottayam

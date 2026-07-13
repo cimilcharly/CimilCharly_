@@ -30,3 +30,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables & secrets
+.env
+
+# Vercel deployment folder
+.vercel/
+
+# Temporary unzipped folders from codebase analysis
+projects/.extracted/

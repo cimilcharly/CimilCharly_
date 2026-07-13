@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { profile } from "./data";
 import { Window } from "./Window";
+import { useAI } from "@/hooks/use-ai";
 
 export function Hero() {
+  const { setIsOpen, prefillMessage } = useAI();
   return (
     <section id="home" className="relative px-4 pt-28 sm:px-8 lg:px-12">
       <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -36,6 +38,18 @@ export function Hero() {
                 >
                   <Download className="h-4 w-4" /> Download Résumé
                 </a>
+                <button
+                  onClick={() => prefillMessage("Summarize your resume and highlight your key certifications.")}
+                  className="glass-soft inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-indigo-400 border border-indigo-500/20 transition hover:scale-[1.02]"
+                >
+                  ✨ Ask Resume AI
+                </button>
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full bg-indigo-600/80 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-indigo-500/20 transition hover:scale-[1.02] hover:shadow-indigo-500/40"
+                >
+                  ✨ Ask My AI Assistant
+                </button>
                 <a
                   href={profile.github}
                   target="_blank"
