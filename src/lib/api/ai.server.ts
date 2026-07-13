@@ -6,6 +6,7 @@ import { z } from "zod";
 import { GoogleGenAI } from "@google/genai";
 
 import { runFullIngestionIndex } from "./indexer.server";
+import prebuiltEmbeddings from "../../../knowledge/embeddings/embeddings.json";
 
 const PROJECT_ROOT = process.cwd();
 const KNOWLEDGE_DIR = path.join(PROJECT_ROOT, "knowledge");
@@ -110,26 +111,29 @@ export const queryAssistant = createServerFn({ method: "POST" })
       };
     }
 
-    // 1. If embeddings do not exist, run a bootstrap index
-    if (!fs.existsSync(EMBEDDINGS_FILE)) {
-      console.log("[AI Server] No vector store detected, running indexing...");
+    // 1. Load vector database (check prebuilt static import first, fall back to filesystem if not loaded)
+    let vectorDb: { chunk: { id: string; title: string; content: string; type: string }; vector: number[] }[] = [];
+    
+    if (Array.isArray(prebuiltEmbeddings) && prebuiltEmbeddings.length > 0) {
+      vectorDb = prebuiltEmbeddings as any;
+    } else {
+      console.log("[AI Server] Loading database from filesystem:", EMBEDDINGS_FILE);
       try {
-        await runFullIngestionIndex();
+        if (fs.existsSync(EMBEDDINGS_FILE)) {
+          vectorDb = JSON.parse(fs.readFileSync(EMBEDDINGS_FILE, "utf-8"));
+        } else if (process.env.VERCEL !== "1") {
+          console.log("[AI Server] No vector store detected, running indexing...");
+          await runFullIngestionIndex();
+          vectorDb = JSON.parse(fs.readFileSync(EMBEDDINGS_FILE, "utf-8"));
+        } else {
+          return { text: "Knowledge base embeddings not found in deployment." };
+        }
       } catch (err) {
-        console.error("[AI Server] Failed to build vector store:", err);
+        console.error("[AI Server] Failed to load vector store:", err);
         return {
-          text: "I encountered an error rebuilding the knowledge base. Please check server logs.",
+          text: "I encountered an error loading the knowledge base. Please check server logs.",
         };
       }
-    }
-
-    // 2. Load vector database
-    let vectorDb: { chunk: { id: string; title: string; content: string; type: string }; vector: number[] }[] = [];
-    try {
-      vectorDb = JSON.parse(fs.readFileSync(EMBEDDINGS_FILE, "utf-8"));
-    } catch (err) {
-      console.error("[AI Server] Failed to parse embeddings file:", err);
-      return { text: "Error loading local knowledge base embeddings." };
     }
 
     // 3. Check if user is asking for real-time GitHub stats, commits, or repos
