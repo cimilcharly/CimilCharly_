@@ -86,24 +86,24 @@ export function Hero() {
         >
           <Window title="now.playing" subtitle="status">
             <div className="space-y-3 p-5 text-sm">
-              <Row label="Building" value="LLM-driven threat detection" />
-              <Row label="Learning" value="Systems design · MLOps" />
+              <Row label="Building" value="Parity (AST Transpiler) · FlowSense" />
+              <Row label="Learning" value="Formal Verification · Distributed AI" />
               <Row label="Reading" value="Designing Data-Intensive Applications" />
-              <Row label="Stack" value="Python · Django · LLMs · Firebase" />
+              <Row label="Stack" value="Python · FastAPI · PyTorch · Next.js · Redis" />
             </div>
           </Window>
 
           <Window title="terminal" subtitle="zsh">
             <pre className="overflow-x-auto p-5 font-mono text-xs leading-relaxed text-muted-foreground">
 {`$ whoami
-cimil charly · ai/ml engineer
+cimil charly · ai/ml & systems engineer
 
 $ stack --list
-  python · java · kotlin · django
-  llms · nlp · firebase · mongodb
+  python · typescript · fastapi · pytorch
+  llms · redis · postgres · docker
 
 $ status
-  ✓ shipping projects
+  ✓ shipping production systems
   ✓ open to roles · summer 2027`}
             </pre>
           </Window>

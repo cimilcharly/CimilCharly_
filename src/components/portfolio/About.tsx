@@ -4,25 +4,25 @@ import { SectionHeading } from "./Projects";
 const notes = [
   {
     title: "what i do",
-    body: "I build AI/ML systems and full-stack apps end-to-end — from research idea to deployed product.",
+    body: "I build production AI systems, deterministic transpilers, and full-stack platforms — from mathematical verification to edge defect detection.",
     tilt: -3,
     tone: "bg-amber-200 text-amber-950 dark:bg-amber-300/90 dark:text-amber-950",
   },
   {
     title: "currently",
-    body: "Final-year B.Tech CS (AI & ML) at CHRIST University. Looking for SDE / ML engineer roles for Summer 2027.",
+    body: "Final-year B.Tech CS (AI & ML) at CHRIST University. Open for SDE / AI Systems Engineer roles for Summer 2027.",
     tilt: 2,
     tone: "bg-cyan-200 text-cyan-950 dark:bg-cyan-300/90 dark:text-cyan-950",
   },
   {
     title: "how i work",
-    body: "Ship small, iterate fast, document well. Comfortable owning a feature from spec → tests → deploy.",
+    body: "Deterministic-first, benchmark-driven, clean documentation. Comfortable owning systems from AST specs → rigorous tests → cloud deploy.",
     tilt: -1.5,
     tone: "bg-rose-200 text-rose-950 dark:bg-rose-300/90 dark:text-rose-950",
   },
   {
     title: "off-hours",
-    body: "Leading NSS volunteers, mentoring juniors, and exploring research on LLM safety & insider risk.",
+    body: "National Service Scheme (NSS) General Leader, mentoring juniors, and exploring research on LLM observability and federated learning.",
     tilt: 3,
     tone: "bg-emerald-200 text-emerald-950 dark:bg-emerald-300/90 dark:text-emerald-950",
   },

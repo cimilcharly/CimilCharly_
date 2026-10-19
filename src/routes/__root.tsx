@@ -72,7 +72,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const SITE_URL = "https://cimilcharly.vercel.app";
+const SITE_URL = "https://cimil-charly.vercel.app";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 const jsonLd = {
@@ -86,13 +86,28 @@ const jsonLd = {
   ],
   jobTitle: "AI/ML Engineer & Full-Stack Developer",
   description:
-    "Final-year B.Tech student in Computer Science (AI & ML) at CHRIST University. Building intelligent, full-stack products — from LLM-driven systems to production ERP modules.",
+    "Final-year B.Tech student in Computer Science (AI & ML) at CHRIST University. Architecting AI systems, deterministic transpilers, high-throughput LLM gateways, and production SaaS platforms.",
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "CHRIST (Deemed to be University)",
     address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
   },
-  knowsAbout: ["Machine Learning", "LLMs", "Full-Stack Development", "Python", "Android", "Django"],
+  knowsAbout: [
+    "Machine Learning",
+    "Large Language Models (LLMs)",
+    "Transpilation & ASTs",
+    "Formal Verification",
+    "AI API Gateways",
+    "Computer Vision & Anomaly Detection",
+    "Federated Learning",
+    "Full-Stack Development",
+    "FastAPI",
+    "Next.js",
+    "Python",
+    "TypeScript",
+    "PostgreSQL",
+    "Redis"
+  ],
   email: "cimilcharly@gmail.com",
 };
 
@@ -105,12 +120,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer. B.Tech CS (AI & ML) at CHRIST University, Bengaluru. Building LLM systems, SaaS platforms, and mobile apps.",
+          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer. B.Tech CS (AI & ML) at CHRIST University, Bengaluru. Architecting AI systems, formal verification transpilers, LLM gateways, and production SaaS platforms.",
       },
       {
         name: "keywords",
         content:
-          "Cimil Charly, cimilcharly, AI ML Engineer, Full Stack Developer, CHRIST University, Bengaluru, Python, Django, LLM, Machine Learning, Android, Portfolio",
+          "Cimil Charly, cimilcharly, AI ML Engineer, Full Stack Developer, Parity, FlowSense, Sentinel AI, VendorIQ, CHRIST University, Bengaluru, Python, FastAPI, Next.js, PyTorch, LLM, Transpilation, Portfolio",
       },
       { name: "author", content: "Cimil Charly" },
       { name: "robots", content: "index, follow" },
@@ -123,7 +138,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer building LLM systems, SaaS platforms, and mobile apps.",
+          "Portfolio of Cimil Charly — AI/ML Engineer and Full-Stack Developer building deterministic transpilers, LLM gateways, edge AI inspection, and production SaaS platforms.",
       },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },

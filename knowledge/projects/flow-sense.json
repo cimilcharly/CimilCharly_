@@ -1,0 +1,74 @@
+{
+  "id": "flow-sense",
+  "name": "FlowSense",
+  "folder": "Flow-Sense",
+  "summary": "FlowSense is a high-performance, open-source AI API Gateway and observability engine designed to intercept, optimize, and secure LLM interactions in production environments.",
+  "recruiterExplanation": "FlowSense showcases Cimil's expertise in GenAI infrastructure, high-throughput backend systems, and LLM reliability engineering. By architecting an OpenAI-compatible reverse proxy with sub-20ms semantic caching, vector-driven security guardrails, and real-time hallucination classification, Cimil solves major production challenges around GenAI costs, latency, and compliance for enterprise engineering teams.",
+  "technicalExplanation": "Implemented in Python with FastAPI, FlowSense sits as a reverse proxy in front of LLM providers. Semantic caching uses SentenceTransformers embeddings stored in Redis to evaluate prompt similarity, serving cached completions for high-frequency queries in under 20ms and cutting API token spend. Security guardrails use Qdrant vector search coupled with regex rules to detect prompt injections, jailbreak patterns, and PII leaks before requests hit upstream models. An embedded DeBERTa model performs real-time output grounding to detect hallucinations against retrieved context, and an automated complexity router routes simple queries to cost-efficient models (like Claude 3.5 Haiku) and difficult prompts to frontier models.",
+  "architectureExplanation": "High-throughput asynchronous proxy pipeline. Incoming requests pass through security interception, semantic cache lookup, dynamic complexity routing, upstream execution, and response grounding analysis before returning to the client, with cryptographically signed logs stored in a SOC2-ready vault.",
+  "languages": [
+    "Python",
+    "Bash"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "PyTorch",
+    "Hugging Face Transformers"
+  ],
+  "databases": [
+    "Redis",
+    "Qdrant (Vector DB)"
+  ],
+  "apis": [
+    "OpenAI-Compatible REST API",
+    "Anthropic API",
+    "Gemini API"
+  ],
+  "auth": [
+    "Bearer Tokens",
+    "API Key Gateway Management"
+  ],
+  "deployment": [
+    "Docker",
+    "Kubernetes-ready",
+    "Linux"
+  ],
+  "designPatterns": [
+    "Reverse Proxy",
+    "Decorator Pattern",
+    "Chain of Responsibility",
+    "Semantic Cache Pattern"
+  ],
+  "features": [
+    "Semantic Caching with SentenceTransformers & Redis (<20ms latency)",
+    "Real-Time DeBERTa Hallucination & Grounding Detection",
+    "Qdrant-Powered Security Guardrails (Jailbreak & PII Prevention)",
+    "Dynamic Prompt-Complexity Cost Routing",
+    "SOC2-Ready Cryptographic Audit Logging"
+  ],
+  "aiModels": [
+    "SentenceTransformers (all-MiniLM-L6-v2)",
+    "DeBERTa-v3 Hallucination Classifier",
+    "GPT-4o",
+    "Claude 3.5 Haiku"
+  ],
+  "libraries": [
+    "sentence-transformers",
+    "qdrant-client",
+    "redis",
+    "fastapi",
+    "uvicorn",
+    "transformers",
+    "torch"
+  ],
+  "faqs": [
+    {
+      "q": "How does FlowSense achieve sub-20ms semantic cache responses?",
+      "a": "FlowSense computes vector embeddings of incoming prompts and queries a high-speed Redis index using cosine similarity thresholds. Exact or near-identical prompts are served immediately from Redis without calling upstream LLM APIs."
+    },
+    {
+      "q": "How does the complexity router decide where to send prompts?",
+      "a": "The gateway analyzes token length, syntactic depth, reasoning keywords, and multi-turn context. Straightforward conversational queries are dispatched to lightweight models like Claude 3.5 Haiku, while complex coding or reasoning prompts are routed to frontier models like GPT-4o, reducing operational costs by up to 60%."
+    }
+  ]
+}

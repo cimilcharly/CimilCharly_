@@ -1,0 +1,55 @@
+{
+  "id": "med-reminder",
+  "name": "Medical Reminder App",
+  "folder": "med-reminder",
+  "summary": "A native Android application designed to reliably schedule medication reminders with cloud sync and offline persistence.",
+  "recruiterExplanation": "This project highlights Cimil's capability in mobile software engineering, real-time database synchronization, and offline-first mobile architecture using native Kotlin, Java, Firebase, and SQLite.",
+  "technicalExplanation": "Built using Kotlin and Java in Android Studio. Uses the native Android AlarmManager and WorkManager APIs to trigger reliable alarm notifications even when the device is idle or restarted. Firebase Realtime Database provides cloud backup and multi-device synchronization, while a local SQLite database provides offline read/write capability with automatic sync when connectivity resumes.",
+  "architectureExplanation": "Offline-first native mobile architecture combining a local SQLite persistence layer with Firebase cloud replication.",
+  "languages": [
+    "Kotlin",
+    "Java",
+    "XML"
+  ],
+  "frameworks": [
+    "Android SDK",
+    "Material Design"
+  ],
+  "databases": [
+    "SQLite",
+    "Firebase Realtime Database"
+  ],
+  "apis": [
+    "Android AlarmManager API",
+    "Firebase API"
+  ],
+  "auth": [
+    "Firebase Authentication"
+  ],
+  "deployment": [
+    "Android APK"
+  ],
+  "designPatterns": [
+    "Offline-First",
+    "Repository Pattern",
+    "Observer Pattern"
+  ],
+  "features": [
+    "Accurate medication schedule alerts using AlarmManager",
+    "Offline-first SQLite local storage",
+    "Firebase cloud sync across devices",
+    "Accessible, patient-friendly UI"
+  ],
+  "aiModels": [],
+  "libraries": [
+    "firebase-database",
+    "firebase-auth",
+    "sqlite"
+  ],
+  "faqs": [
+    {
+      "q": "How does the app ensure medication alerts fire even if the device restarts?",
+      "a": "The app listens for boot-completed broadcast intents and re-registers upcoming medication alerts in the Android AlarmManager."
+    }
+  ]
+}

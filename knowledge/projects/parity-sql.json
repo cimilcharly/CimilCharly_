@@ -1,0 +1,69 @@
+{
+  "id": "parity-sql",
+  "name": "Parity",
+  "folder": "Parity-sql",
+  "summary": "Parity is a deterministic-first Oracle to PostgreSQL SQL & PL/SQL migration and transpilation engine with a 5-layer mathematical verification stack and zero raw data leakage.",
+  "recruiterExplanation": "Parity demonstrates Cimil's deep mastery of compilers, language engineering, and formal verification. Rather than relying on non-deterministic LLMs that produce silent semantic errors in enterprise database migrations (such as Oracle null-string equivalence or outer join semantics), Cimil built an AST-driven rewrite engine verified by 5 mathematical layers—syntax parsing, type schema parity, relational algebra, differential symbolic execution, and automated GitHub PR creation. The system achieves a 94% verified pass rate on a 500-object enterprise benchmark.",
+  "technicalExplanation": "The core transpiler operates on Abstract Syntax Trees (ASTs) using sqlglot and custom dialect rules to map Oracle SQL and PL/SQL semantics to ANSI/PostgreSQL equivalents. Transpiled code is verified across 5 distinct layers: Layer 1 checks syntactic validity and grammar via dual-engine AST parsing. Layer 2 verifies type system and schema parity against target catalog definitions. Layer 3 proves relational algebra equivalence. Layer 4 performs differential symbolic execution with zero raw data leakage to guarantee identical runtime behavior on edge-case semantics (e.g. ORA_DIFF_001 null handling, string concatenation, outer joins, and ROWNUM evaluation order). Layer 5 integrates with GitHub Actions to emit automated migration PRs.",
+  "architectureExplanation": "Deterministic-first modular compiler architecture. Separation of the syntax transformation stage from the mathematical verification pipeline. The verification pipeline acts as an immutable gatekeeper: candidate queries are proposed by either rewrite rules or constrained LLMs, but are only accepted if all 5 verification layers mathematically certify semantic equivalence.",
+  "languages": [
+    "Python",
+    "SQL",
+    "PL/SQL"
+  ],
+  "frameworks": [
+    "sqlglot",
+    "ANTLR",
+    "FastAPI",
+    "Pydantic"
+  ],
+  "databases": [
+    "PostgreSQL",
+    "Oracle"
+  ],
+  "apis": [
+    "GitHub REST API",
+    "CLI"
+  ],
+  "auth": [
+    "API Keys",
+    "GitHub App Tokens"
+  ],
+  "deployment": [
+    "Docker",
+    "GitHub Actions",
+    "CLI"
+  ],
+  "designPatterns": [
+    "Abstract Syntax Tree (AST) Visitor",
+    "Pipeline Pattern",
+    "Formal Verification Gatekeeper",
+    "Differential Execution"
+  ],
+  "features": [
+    "Deterministic AST Transpilation for Oracle to PostgreSQL",
+    "5-Layer Mathematical Verification Stack",
+    "94% Verified Pass Rate across 500 Enterprise Objects",
+    "Zero Raw Data Leakage Architecture",
+    "Automated GitHub Pull Request Generation with Migration Diffs"
+  ],
+  "aiModels": [
+    "Constrained LLM Transpilation Fallback with Mathematical Verification Gate"
+  ],
+  "libraries": [
+    "sqlglot",
+    "pydantic",
+    "pytest",
+    "z3-solver"
+  ],
+  "faqs": [
+    {
+      "q": "Why can't generic LLMs reliably migrate Oracle SQL to PostgreSQL?",
+      "a": "Generic LLMs only ensure syntactic validity; they frequently fail silently on runtime semantics such as Oracle treating empty strings as NULL, string concatenation with NULL, legacy (+) outer joins, and ROWNUM execution order. Parity uses a 5-layer verification stack that mathematically checks relational algebra and differential symbolic execution before approving any migration."
+    },
+    {
+      "q": "What benchmark was used to validate Parity?",
+      "a": "Parity was evaluated against an enterprise benchmark of 500 diverse Oracle SQL and PL/SQL objects spanning base queries, legacy outer joins, complex analytic functions, subqueries, and PL/SQL blocks, achieving an overall verified pass rate of 94%."
+    }
+  ]
+}

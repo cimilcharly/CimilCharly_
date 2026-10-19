@@ -1,0 +1,73 @@
+{
+  "id": "secure-ai-inspection",
+  "name": "Secure AI Quality Inspector",
+  "folder": "Secure-AI-powered-industrial-quality-monitoring-system",
+  "summary": "An industrial automated fabric defect inspection and anomaly detection platform combining YOLOv8m, PatchCore, Grad-CAM, AES-256-GCM encryption, and 3-node federated learning.",
+  "recruiterExplanation": "This project showcases Cimil's capability at the intersection of Computer Vision, Edge AI, Industrial IoT, and Distributed Systems. Built on real-world industrial datasets, the system handles supervised defect classification, unsupervised anomaly detection for never-before-seen defects, explainable AI with Grad-CAM, and privacy-preserving federated model updates across simulated factories—demonstrating production-grade ML engineering.",
+  "technicalExplanation": "The architecture ingests camera images through an AES-256-GCM encrypted transport channel with SHA-256 integrity verification. Preprocessing applies CLAHE contrast optimization and bilateral denoising. A dual-model vision pipeline executes in parallel: a fine-tuned YOLOv8m model classifies known defects across 4 verified categories, while a PatchCore memory-bank model detects novel zero-shot structural anomalies. Predictions are visually explained with Grad-CAM activation heatmaps. The system computes severity metrics and estimated scrap cost in Indian Rupees (₹). A 3-node federated learning simulation using FedAvg trains models collaboratively across simulated factory nodes without centralizing raw fabric imagery.",
+  "architectureExplanation": "Edge-to-cloud industrial inspection architecture. Client edge cameras transmit encrypted frames to a FastAPI backend. Inference outputs are served to a Streamlit operations console and stored in an encrypted database. Model updates are federated via decentralized weights aggregation.",
+  "languages": [
+    "Python"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Streamlit",
+    "PyTorch",
+    "Ultralytics YOLOv8"
+  ],
+  "databases": [
+    "SQLite",
+    "File System Object Store"
+  ],
+  "apis": [
+    "FastAPI REST Endpoints",
+    "Edge WebSocket Stream"
+  ],
+  "auth": [
+    "JWT",
+    "Role-Based Access (Admin / Quality Operator)"
+  ],
+  "deployment": [
+    "Docker",
+    "Edge Device / Local Server"
+  ],
+  "designPatterns": [
+    "Dual-Model Vision Pipeline",
+    "Federated Aggregation (FedAvg)",
+    "Explainable AI (Grad-CAM)",
+    "Envelope Encryption"
+  ],
+  "features": [
+    "YOLOv8m 4-Category Fabric Defect Detection",
+    "PatchCore Unsupervised Anomaly Detection for Zero-Day Defects",
+    "Grad-CAM Visual Attention Heatmap Generation",
+    "Real-Time Defect Severity & Financial Loss Impact Scoring (₹)",
+    "AES-256-GCM Encryption & SHA-256 Tamper Checks",
+    "3-Node Federated Learning Simulation (FedAvg)"
+  ],
+  "aiModels": [
+    "YOLOv8m",
+    "PatchCore",
+    "ResNet Backbones",
+    "Grad-CAM"
+  ],
+  "libraries": [
+    "ultralytics",
+    "torch",
+    "torchvision",
+    "opencv-python",
+    "cryptography",
+    "streamlit",
+    "fastapi"
+  ],
+  "faqs": [
+    {
+      "q": "Why combine YOLOv8 with PatchCore?",
+      "a": "YOLOv8 excels at rapidly localizing and classifying known, labeled defect classes. However, in manufacturing, novel or unseen defects can occur. PatchCore uses a memory bank of normal visual features to flag any abnormal deviations without needing prior training examples of that specific defect."
+    },
+    {
+      "q": "How does the federated learning component work?",
+      "a": "A 3-node FedAvg architecture trains local models on private factory image batches, sending only gradient updates to a coordinator node that aggregates weights, preserving proprietary factory imagery and maintaining privacy."
+    }
+  ]
+}

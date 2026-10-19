@@ -4,23 +4,47 @@
       "name": "Languages",
       "items": [
         "Python",
-        "Java",
-        "C",
+        "TypeScript",
         "JavaScript",
-        "Kotlin"
+        "SQL",
+        "Java",
+        "Kotlin",
+        "C",
+        "Bash"
       ]
     },
     {
-      "name": "Frameworks",
+      "name": "AI & ML Systems",
       "items": [
+        "LLMs & RAG",
+        "Semantic Caching",
+        "DeBERTa",
+        "Qdrant / Vector DBs",
+        "YOLOv8 & CV",
+        "PatchCore & Grad-CAM",
+        "Federated Learning (FedAvg)",
+        "Vapi Voice AI",
+        "Isolation Forest"
+      ]
+    },
+    {
+      "name": "Frameworks & Backend",
+      "items": [
+        "FastAPI",
+        "Next.js",
+        "React",
         "Django",
-        "Bootstrap",
-        "Streamlit"
+        "PyTorch",
+        "Streamlit",
+        "Tailwind CSS",
+        "Bootstrap"
       ]
     },
     {
-      "name": "Databases",
+      "name": "Databases & Storage",
       "items": [
+        "PostgreSQL",
+        "Redis",
         "MongoDB",
         "MySQL",
         "SQLite",
@@ -28,8 +52,11 @@
       ]
     },
     {
-      "name": "Tools",
+      "name": "DevOps & Cloud",
       "items": [
+        "Docker",
+        "Vercel",
+        "Render",
         "Git",
         "GitHub",
         "Postman",
@@ -37,14 +64,15 @@
       ]
     },
     {
-      "name": "Concepts",
+      "name": "Architecture & Systems",
       "items": [
-        "Machine Learning",
-        "NLP",
-        "LLMs",
-        "REST APIs",
-        "OOP",
-        "SDLC"
+        "Deterministic Transpilation & ASTs",
+        "5-Layer Mathematical Verification",
+        "AI Gateways & Proxies",
+        "MCDA & TOPSIS Algorithms",
+        "RESTful APIs",
+        "RBAC & Security",
+        "OOP & SDLC"
       ]
     }
   ],
