@@ -61,6 +61,7 @@ Deployment  →  Vercel (SSR)
 
 **Cimil Charly** — Final-year B.Tech student in Computer Science (AI & ML) at **CHRIST (Deemed to be University)**, Bengaluru · CGPA **8.8 / 10**
 
+- 💼 **AI Intern** @ HL Mando Softtech India Pvt. Ltd. (HL MSI) — Building automated Python ETL pipelines for structured/semi-structured Excel data
 - 💼 **Intern** @ Genrobotics Innovations Pvt. Ltd. — Built ERP modules, streamlined workflows
 - 📜 **Copyright** — Government of India registered research work
 - 🏅 **Certifications** — IBM Chatbot, NPTEL IoT (IIT Kharagpur), L&T EduTech Data Analytics

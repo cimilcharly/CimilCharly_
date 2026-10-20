@@ -38,7 +38,7 @@
 - 🎓 **Education:** Final-year **B.Tech in Computer Science (AI & ML)** at **CHRIST (Deemed to be University)**, Bengaluru (CGPA: **8.8 / 10**).
 - 🧠 **Focus:** Deterministic transpilation & formal verification, high-performance LLM gateways & observability, edge computer vision with federated learning, and enterprise full-stack SaaS.
 - 💻 **Engineering Philosophy:** Deterministic-first architectures, verified mathematical rigor, clean benchmark datasets, and secure, production-grade cloud deployments.
-- 💼 **Experience:** **Software Development Intern** at **Genrobotics Innovations** (Technopark, Thiruvananthapuram), developing enterprise ERP modules and core workflow automations.
+- 💼 **Experience:** **Artificial Intelligence Intern** at **HL Mando Softtech India (HL MSI)** (Aug 2026 – Present) · Former **Software Development Intern** at **Genrobotics Innovations**.
 
 ---
 
@@ -177,6 +177,13 @@
 ---
 
 ### 💼 Professional Experience
+
+* **Artificial Intelligence Intern** @ **HL Mando Softtech India Pvt. Ltd. (HL MSI)** *(Bengaluru, India)*
+  * **Duration:** Aug 2026 – Present
+  * Developing a Python-based pipeline to consolidate structured and semi-structured Excel data into clean, standardized JSON output.
+  * Processing Excel workbooks using OpenPyXL and Pandas, handling merged cells, headers, missing values, empty rows/columns, and inconsistent data structures.
+  * Designing data transformation and validation logic to preserve meaningful headings and row-level information while generating consistent JSON records.
+  * Experimenting with and refining the data-processing workflow to improve accuracy, consistency, and usability of the generated output.
 
 * **Software Development Intern** @ **Genrobotics Innovations Pvt. Ltd.** *(Technopark, Thiruvananthapuram)*
   * **Duration:** Apr 2026 – May 2026

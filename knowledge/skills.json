@@ -36,6 +36,8 @@
         "Django",
         "PyTorch",
         "Streamlit",
+        "Pandas",
+        "OpenPyXL",
         "Tailwind CSS",
         "Bootstrap"
       ]

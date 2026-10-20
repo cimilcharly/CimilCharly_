@@ -179,6 +179,18 @@ export const projects = [
 
 export const experience = [
   {
+    role: "Artificial Intelligence Intern",
+    company: "HL Mando Softtech India Pvt. Ltd. (HL MSI)",
+    where: "Bengaluru, India",
+    when: "Aug 2026 – Present",
+    notes: [
+      "Developing a Python-based pipeline to consolidate structured and semi-structured Excel data into clean, standardized JSON output.",
+      "Processing Excel workbooks using OpenPyXL and Pandas, handling merged cells, headers, missing values, empty rows/columns, and inconsistent data structures.",
+      "Designing data transformation and validation logic to preserve meaningful headings and row-level information while generating consistent JSON records.",
+      "Experimenting with and refining the data-processing workflow to improve accuracy, consistency, and usability of the generated output.",
+    ],
+  },
+  {
     role: "Software Development Intern",
     company: "Genrobotics Innovations Pvt. Ltd.",
     where: "Technopark, Thiruvananthapuram",
@@ -241,6 +253,8 @@ export const skillGroups = [
       "Django",
       "PyTorch",
       "Streamlit",
+      "Pandas",
+      "OpenPyXL",
       "Tailwind CSS",
       "Bootstrap",
     ],
